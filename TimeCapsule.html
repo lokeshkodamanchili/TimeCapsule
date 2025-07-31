@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TimeCapsule</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      height: 100vh;
+      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+      padding: 30px 10px;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      color: #fff;
+      text-shadow: 2px 2px 10px #00000055;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .card {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+      padding: 40px 30px;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+    }
+
+    .card h2 {
+      font-size: 2rem;
+      margin-bottom: 25px;
+      color: #fff;
+    }
+
+    .card a {
+      display: inline-block;
+      padding: 12px 25px;
+      font-size: 1rem;
+      color: white;
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .card a:hover {
+      background: linear-gradient(to right, #ff6a00, #ee0979);
+      transform: scale(1.1);
+    }
+
+    footer {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      text-shadow: 1px 1px 4px #000;
+    }
+
+    @media screen and (max-width: 700px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TimeCapsule</h1>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <h2>Seniors Upload</h2>
+      <a href="https://forms.office.com/pages/responsepage.aspx?id=lvhZc-Jxrk24oxXN-X8vEKeL4prtP3ZIqV7AxQ30OZZURUY4RU5QTEI5SVA3UDZaRkFCRjNJRktaNy4u&route=shorturl" target="_blank">Upload Files</a>
+    </div>
+    <div class="card">
+      <h2>Junior Access</h2>
+      <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=lvhZc-Jxrk24oxXN-X8vEKeL4prtP3ZIqV7AxQ30OZZUOFZEU0YyRDNQOVpQREVVRTJINEozT1o3WC4u" target="_blank">Access Files</a>
+    </div>
+  </div>
+
+  <footer>
+    ✨ Thanks for using TimeCapsule ✨
+  </footer>
+
+  <script>
+    // Add fancy interaction or animation logic here
+    console.log("🎉 TimeCapsule UI Loaded Successfully!");
+  </script>
+</body>
+</html>
