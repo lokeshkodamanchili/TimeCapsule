@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TimeCapsule | Digital Legacy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter', sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background: radial-gradient(circle at 10% 20%, #1e3c72, #2a5298);
+    color:white;
+}
+
+/* Navbar */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 60px;
+    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,0.05);
+}
+
+nav h2{
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+nav ul li{
+    cursor:pointer;
+    transition:0.3s;
+}
+
+nav ul li:hover{
+    color:#00f2ff;
+}
+
+/* Sections */
+.section{
+    padding:70px 20px;
+    text-align:center;
+}
+
+.hidden{
+    display:none;
+}
+
+/* Hero */
+.hero h1{
+    font-size:3rem;
+    margin-bottom:20px;
+    background:linear-gradient(90deg,#ff00cc,#00f2ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    max-width:600px;
+    margin:auto;
+    opacity:0.85;
+}
+
+/* Cards */
+.container{
+    display:flex;
+    justify-content:center;
+    gap:50px;
+    flex-wrap:wrap;
+    padding-top:40px;
+}
+
+.card{
+    width:320px;
+    padding:40px 30px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.2);
+    text-align:center;
+    transition:0.4s ease;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.05);
+}
+
+.card p{
+    opacity:0.85;
+    font-size:0.95rem;
+    line-height:1.6;
+    margin:15px 0;
+}
+
+.btn{
+    display:inline-block;
+    padding:12px 28px;
+    border-radius:30px;
+    text-decoration:none;
+    color:white;
+    font-weight:600;
+    background:linear-gradient(90deg,#ff00cc,#00f2ff);
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.1);
+}
+
+/* About & Guide Container */
+.content-container{
+    max-width:900px;
+    margin:auto;
+    text-align:left;
+    line-height:1.8;
+}
+
+.content-container h2{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:2.2rem;
+}
+
+.content-container h3{
+    margin-top:25px;
+    margin-bottom:10px;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:30px;
+    opacity:0.7;
+    font-size:0.9rem;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    nav{
+        flex-direction:column;
+        gap:15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h2>⏳ TimeCapsule</h2>
+    <ul>
+        <li onclick="showHome()">Home</li>
+        <li onclick="showAbout()">About</li>
+        <li onclick="showGuide()">User Guide</li>
+    </ul>
+</nav>
+
+<!-- HOME -->
+<section id="homeSection" class="section hero">
+    <h1>Preserve. Share. Inspire.</h1>
+    <p>A digital platform where seniors pass knowledge to juniors and build a smarter academic future.</p>
+
+    <div class="container">
+
+        <div class="card">
+            <h2>🎓 Seniors Upload</h2>
+            <p>
+                Share your valuable notes, assignments, and academic resources 
+                to support and guide upcoming batches effectively.
+            </p>
+            <a href="https://forms.office.com/pages/responsepage.aspx?id=lvhZc-Jxrk24oxXN-X8vEKeL4prtP3ZIqV7AxQ30OZZURUY4RU5QTEI5SVA3UDZaRkFCRjNJRktaNy4u&route=shorturl" target="_blank" class="btn">
+                Upload Files
+            </a>
+        </div>
+
+        <div class="card">
+            <h2>📂 Junior Access</h2>
+            <p>
+                Access curated study materials shared by seniors 
+                to prepare smarter and achieve better academic success.
+            </p>
+            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=lvhZc-Jxrk24oxXN-X8vEKeL4prtP3ZIqV7AxQ30OZZUOFZEU0YyRDNQOVpQREVVRTJINEozT1o3WC4u" target="_blank" class="btn">
+                Access Files
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="aboutSection" class="section hidden">
+    <div class="content-container">
+
+        <h2>About the Project</h2>
+
+        <p><strong>TimeCapsule – Unlock the Past, Ace the Future</strong> is an academic knowledge-sharing platform developed to preserve valuable study materials from seniors and make them accessible to juniors.</p>
+
+        <p>The system allows seniors to upload notes, PDFs, assignments, and important resources, which are securely stored and organized using Microsoft Excel, SharePoint, and Power Automate.</p><br>
+
+        <p>The platform ensures structured document storage, automated workflows, and smooth knowledge transfer between batches, helping students prepare smarter and achieve better academic success.</p>
+
+        <h3>Team – Roles & Responsibilities</h3>
+        <p>
+        <strong> Kodamanchili Sri Satya Lokesh </strong>  – Junior Flow Development<br>
+        <strong> Karri Karthik Raju </strong> – Senior Flow Development<br>
+        <strong> Kankatala Madhurima </strong> – SharePoint Management<br>
+        <strong> Billakurthi Varshitha </strong> – Forms Creation<br>
+        <strong> Malla Charmi </strong> – Senior Testing & Validation<br>
+        <strong> Narla Veera Venkata Suryanarayana </strong> – Junior Testing & Validation
+        </p>
+
+        <h3>Developed Under iSHIP – Technical Hub</h3>
+        <p>This project was successfully developed as part of the <strong>iSHIP program at Technical Hub</strong>, gaining hands-on experience in workflow automation and document management.</p>
+
+    </div>
+</section>
+
+<!-- USER GUIDE -->
+<section id="guideSection" class="section hidden">
+    <div class="content-container">
+
+        <h2>📘 User Guide</h2>
+
+        <h3>👨‍🎓 For Seniors</h3>
+        <p>
+         Login with college mail only (Aditya college)<br>
+        1️⃣ Open the <strong>Senior Upload Form</strong>.<br>
+        2️⃣ Fill in subject details and upload your document.<br>
+        3️⃣ Submit the form for approval.<br>
+        4️⃣ Receive an email notification (Approved / Rejected).<br>
+        5️⃣ Approved files are stored securely in subject-wise folders.
+        </p>
+
+        <h3>👨‍🎓 For Juniors</h3>
+        <p>
+        Login with college mail only (Aditya college)<br>
+        1️⃣ Open the <strong>Junior Access Form</strong>.<br>
+        2️⃣ Submit your request with required details.<br>
+        3️⃣ Receive the SharePoint folder link via email.<br>
+        4️⃣ Access study materials and submit feedback.
+        </p>
+
+        <h3>🔄 System Process</h3>
+        <p>
+        ✔ Documents are routed for approval through Power Automate.<br>
+        ✔ Approved files are stored in SharePoint.<br>
+        ✔ All activities are logged and tracked for transparency.
+        </p>
+
+    </div>
+</section>
+
+<footer>
+Built by ⏳ Team 37 | iSHIP @Technical Hub
+</footer>
+
+<script>
+function hideAll(){
+    document.getElementById("homeSection").classList.add("hidden");
+    document.getElementById("aboutSection").classList.add("hidden");
+    document.getElementById("guideSection").classList.add("hidden");
+}
+
+function showHome(){
+    hideAll();
+    document.getElementById("homeSection").classList.remove("hidden");
+}
+
+function showAbout(){
+    hideAll();
+    document.getElementById("aboutSection").classList.remove("hidden");
+}
+
+function showGuide(){
+    hideAll();
+    document.getElementById("guideSection").classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
