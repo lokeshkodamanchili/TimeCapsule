@@ -71,7 +71,7 @@ All working screenshots and flow implementations are available inside the `asset
 
 Video demonstration is available in the `Video Demo` folder.
 
-## 👥 Team 20 – Roles & Responsibilities
+## 👥 Team – Roles & Responsibilities
 
 * **Karri Karthik Raju** – Senior Flow Development
 * **Kodamanchili Sri Satya Lokesh** – Junior Flow Development
