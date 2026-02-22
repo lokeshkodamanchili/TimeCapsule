@@ -1,11 +1,17 @@
-# ⏳ TimeCapsule – Unlock the Past, Ace the Future
-
-An academic knowledge-sharing platform developed under the **iSHIP Program @ Technical Hub** that automates senior document uploads, approval workflows, and junior access using Microsoft 365 tools.
-
 <p align="center">
   <img src="assets/Images/Timecapsule logo.jpg" width="120" />
 </p>
 
+
+# ⏳ TimeCapsule – Unlock the Past, Ace the Future
+
+An academic knowledge-sharing platform developed under the **iSHIP Program @ Technical Hub** that automates senior document uploads, approval workflows, and junior access using Microsoft 365 tools.
+
+
+## 🖥 Preview
+
+### 🌐 Website Home Page
+<img src="assets/Images/homepage.jpeg" width="800">
 
 ## 📌 Project Overview
 
