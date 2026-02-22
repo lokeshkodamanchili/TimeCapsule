@@ -14,17 +14,13 @@ An academic knowledge-sharing platform developed under the **iSHIP Program @ Tec
 <img src="assets/Images/homepage.jpeg" width="800">
 
 
-## 🎥 Project Demonstration
+## 🎥 Project Demo
 
-This demo video showcases:
+### 🔹 Senior Flow (PC View)
+▶ [Watch Senior Flow](Video%20Demo/PC%20View/Seniorflow.mp4)
 
-- Senior Document Upload Flow  
-- Automated Approval Workflow  
-- Outlook Email Notifications  
-- SharePoint Subject-wise Storage  
-- Junior Access System  
-
-▶ **[Watch Full Demo Video](Video%Demo/PC%View)**
+### 🔹 Junior Flow (PC View)
+▶ [Watch Junior Flow](Video%20Demo/PC%20View/Juniorflow.mp4)
 
 
 ## 📌 Project Overview
