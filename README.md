@@ -13,6 +13,20 @@ An academic knowledge-sharing platform developed under the **iSHIP Program @ Tec
 ### 🌐 Website Home Page
 <img src="assets/Images/homepage.jpeg" width="800">
 
+
+## 🎥 Project Demonstration
+
+This demo video showcases:
+
+- Senior Document Upload Flow  
+- Automated Approval Workflow  
+- Outlook Email Notifications  
+- SharePoint Subject-wise Storage  
+- Junior Access System  
+
+▶ **[Watch Full Demo Video](Video Demo/PC View)**
+
+
 ## 📌 Project Overview
 
 TimeCapsule is designed to preserve valuable academic resources from senior students and make them accessible to juniors through a structured and automated workflow system.
