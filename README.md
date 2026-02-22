@@ -24,7 +24,7 @@ This demo video showcases:
 - SharePoint Subject-wise Storage  
 - Junior Access System  
 
-▶ **[Watch Full Demo Video](Video Demo/PC View)**
+▶ **[Watch Full Demo Video](Video%Demo/PCView)**
 
 
 ## 📌 Project Overview
