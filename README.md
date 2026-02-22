@@ -2,6 +2,11 @@
 
 An academic knowledge-sharing platform developed under the **iSHIP Program @ Technical Hub** that automates senior document uploads, approval workflows, and junior access using Microsoft 365 tools.
 
+<p align="center">
+  <img src="assets/Images/Timecapsule logo.jpg" width="120" />
+</p>
+
+
 ## 📌 Project Overview
 
 TimeCapsule is designed to preserve valuable academic resources from senior students and make them accessible to juniors through a structured and automated workflow system.
