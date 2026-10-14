@@ -1,159 +1,900 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TimeCapsule | Digital Legacy</title>
+<meta name="theme-color" content="#f6f7fb">
+<title>TimeCapsule — Unlock the Past, Ace the Future</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Inter', sans-serif;
+:root {
+    --bg: #f6f7fb;
+    --white: #ffffff;
+    --ink: #141b2d;
+    --muted: #707b91;
+    --blue: #6255e7;
+    --blue-light: #eae8ff;
+    --cyan: #7be7e0;
+    --line: #e8eaf1;
+    --radius: 24px;
+    --shadow: 0 16px 55px rgba(27, 35, 74, .07);
 }
 
-body{
-    min-height:100vh;
-    background: radial-gradient(circle at 10% 20%, #1e3c72, #2a5298);
-    color:white;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Navbar */
-nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 60px;
-    backdrop-filter:blur(10px);
-    background:rgba(255,255,255,0.05);
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
 }
 
-nav h2{
-    font-weight:700;
-    letter-spacing:2px;
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    line-height: 1.7;
+    overflow-x: hidden;
 }
 
-nav ul{
-    display:flex;
-    gap:30px;
-    list-style:none;
+button, a {
+    -webkit-tap-highlight-color: transparent;
 }
 
-nav ul li{
-    cursor:pointer;
-    transition:0.3s;
+a {
+    color: inherit;
 }
 
-nav ul li:hover{
-    color:#00f2ff;
+button {
+    font: inherit;
 }
 
-/* Sections */
-.section{
-    padding:70px 20px;
-    text-align:center;
+/* Navigation */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    padding: 15px clamp(18px, 6vw, 90px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    background: rgba(246, 247, 251, .87);
+    border-bottom: 1px solid rgba(220, 223, 235, .8);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
 }
 
-.hidden{
-    display:none;
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+}
+
+.brand-mark {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    color: white;
+    font-size: 22px;
+    background: linear-gradient(140deg, #7768f5, #4935d0);
+    box-shadow: 0 7px 20px rgba(98, 85, 231, .24);
+}
+
+.brand-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -.8px;
+}
+
+.brand-name span {
+    color: var(--blue);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    list-style: none;
+    padding: 5px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+}
+
+.nav-links li {
+    padding: 8px 17px;
+    border-radius: 11px;
+    color: #717a8e;
+    cursor: pointer;
+    font-size: .88rem;
+    font-weight: 600;
+    transition: .25s ease;
+}
+
+.nav-links li:hover,
+.nav-links li.active {
+    background: var(--blue-light);
+    color: var(--blue);
+}
+
+.nav-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #626d81;
+    font-size: .8rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #24bb91;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(36, 187, 145, .12);
+}
+
+/* Shared sections */
+
+.section {
+    width: 100%;
+    padding: 70px 24px;
+    animation: pageEnter .4s ease both;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(9px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-wrap {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
 }
 
 /* Hero */
-.hero h1{
-    font-size:3rem;
-    margin-bottom:20px;
-    background:linear-gradient(90deg,#ff00cc,#00f2ff);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+
+.hero {
+    padding-top: 35px;
+    padding-bottom: 70px;
 }
 
-.hero p{
-    max-width:600px;
-    margin:auto;
-    opacity:0.85;
+.hero-panel {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: clamp(40px, 7vw, 85px) clamp(25px, 6vw, 80px) 0;
+    border-radius: 34px;
+    color: white;
+    background:
+        radial-gradient(ellipse at 85% 8%, rgba(108, 94, 247, .50), transparent 36%),
+        radial-gradient(ellipse at 0% 100%, rgba(29, 173, 198, .20), transparent 38%),
+        #151b34;
+    box-shadow: 0 25px 75px rgba(24, 29, 65, .13);
 }
 
-/* Cards */
-.container{
-    display:flex;
-    justify-content:center;
-    gap:50px;
-    flex-wrap:wrap;
-    padding-top:40px;
+.hero-panel::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 390px;
+    height: 390px;
+    top: 15%;
+    right: -115px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, .13);
+    box-shadow:
+        0 0 0 35px rgba(255, 255, 255, .025),
+        0 0 0 75px rgba(255, 255, 255, .02);
+    pointer-events: none;
 }
 
-.card{
-    width:320px;
-    padding:40px 30px;
-    border-radius:25px;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(15px);
-    border:1px solid rgba(255,255,255,0.2);
-    text-align:center;
-    transition:0.4s ease;
+.hero-panel::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 240px;
+    height: 240px;
+    top: 20%;
+    right: 0;
+    border-radius: 50%;
+    background: rgba(111, 96, 255, .22);
+    filter: blur(70px);
+    pointer-events: none;
 }
 
-.card:hover{
-    transform:translateY(-10px) scale(1.05);
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 13px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 30px;
+    color: #e3e6ff;
+    background: rgba(255, 255, 255, .06);
+    font-size: .77rem;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
 }
 
-.card p{
-    opacity:0.85;
-    font-size:0.95rem;
-    line-height:1.6;
-    margin:15px 0;
+.eyebrow-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--cyan);
 }
 
-.btn{
-    display:inline-block;
-    padding:12px 28px;
-    border-radius:30px;
-    text-decoration:none;
-    color:white;
-    font-weight:600;
-    background:linear-gradient(90deg,#ff00cc,#00f2ff);
-    transition:0.3s;
+.hero h1 {
+    max-width: 790px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.8rem, 6.7vw, 5.4rem);
+    font-weight: 600;
+    letter-spacing: -4px;
+    line-height: 1.07;
 }
 
-.btn:hover{
-    transform:scale(1.1);
+.hero h1 span {
+    display: block;
+    color: #aaa2ff;
 }
 
-/* About & Guide Container */
-.content-container{
-    max-width:900px;
-    margin:auto;
-    text-align:left;
-    line-height:1.8;
+.hero-copy {
+    max-width: 550px;
+    margin-top: 23px;
+    color: #c1c9dc;
+    font-size: 1.04rem;
+    line-height: 1.9;
 }
 
-.content-container h2{
-    text-align:center;
-    margin-bottom:25px;
-    font-size:2.2rem;
+.hero-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 32px;
 }
 
-.content-container h3{
-    margin-top:25px;
-    margin-bottom:10px;
+.hero-caption {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #d0d6e7;
+    font-size: .84rem;
+}
+
+.caption-icon {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, .09);
+    font-size: 16px;
+}
+
+.hero-art {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    min-height: 115px;
+    padding-top: 25px;
+}
+
+.art-window {
+    width: min(390px, 100%);
+    padding: 17px 20px 0;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-bottom: 0;
+    border-radius: 17px 17px 0 0;
+    background: rgba(255, 255, 255, .07);
+    backdrop-filter: blur(12px);
+}
+
+.window-top {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 17px;
+}
+
+.window-top i {
+    width: 7px;
+    height: 7px;
+    background: rgba(255, 255, 255, .45);
+    border-radius: 50%;
+}
+
+.window-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 0;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+}
+
+.window-icon {
+    width: 37px;
+    height: 37px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    color: #e5e2ff;
+    background: rgba(140, 125, 255, .23);
+}
+
+.window-icon.cyan {
+    color: #a3fff5;
+    background: rgba(63, 204, 189, .17);
+}
+
+.window-label {
+    color: white;
+    font-size: .82rem;
+    font-weight: 700;
+}
+
+.window-sub {
+    color: #aeb9d0;
+    font-size: .72rem;
+}
+
+.window-arrow {
+    margin-left: auto;
+    color: #bcb6ff;
+}
+
+/* Access cards */
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.section-kicker {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--blue);
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.section-heading h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    line-height: 1.25;
+    letter-spacing: -1.3px;
+}
+
+.section-heading p {
+    max-width: 420px;
+    color: var(--muted);
+    font-size: .92rem;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 23px;
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 305px;
+    padding: 31px;
+    background: var(--white);
+    border: 1px solid #e9eaf2;
+    border-radius: var(--radius);
+    box-shadow: 0 7px 30px rgba(24, 32, 70, .035);
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: #d4d0ff;
+    box-shadow: var(--shadow);
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.card-icon {
+    width: 57px;
+    height: 57px;
+    display: grid;
+    place-items: center;
+    border-radius: 18px;
+    color: #6152e7;
+    background: #eeecff;
+}
+
+.card-icon svg {
+    width: 27px;
+    height: 27px;
+}
+
+.card-icon.mint {
+    color: #168e85;
+    background: #e3faf4;
+}
+
+.card-tag {
+    padding: 6px 10px;
+    border: 1px solid #e7e8ef;
+    border-radius: 9px;
+    color: #798196;
+    background: #fafbfe;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .3px;
+}
+
+.card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.48rem;
+    letter-spacing: -.6px;
+    line-height: 1.4;
+}
+
+.card p {
+    max-width: 430px;
+    margin: 10px 0 25px;
+    color: var(--muted);
+    font-size: .92rem;
+    line-height: 1.85;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    min-height: 47px;
+    margin-top: auto;
+    padding: 12px 19px;
+    border: 1px solid var(--blue);
+    border-radius: 12px;
+    background: var(--blue);
+    color: white;
+    text-decoration: none;
+    font-size: .88rem;
+    font-weight: 700;
+    transition: .25s ease;
+}
+
+.btn svg {
+    width: 17px;
+    height: 17px;
+    transition: transform .25s ease;
+}
+
+.btn:hover {
+    background: #4d40cf;
+    box-shadow: 0 7px 20px rgba(98, 85, 231, .2);
+    transform: translateY(-2px);
+}
+
+.btn:hover svg {
+    transform: translateX(3px);
+}
+
+.btn.secondary {
+    color: #147f77;
+    background: #e7faf5;
+    border-color: #d7f2ea;
+}
+
+.btn.secondary:hover {
+    background: #d5f5ec;
+    box-shadow: 0 7px 20px rgba(35, 163, 140, .12);
+}
+
+/* Shared content pages */
+
+.content-container {
+    max-width: 930px;
+    margin: 0 auto;
+    padding: clamp(26px, 5vw, 55px);
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+    text-align: left;
+}
+
+.content-header {
+    padding-bottom: 28px;
+    margin-bottom: 27px;
+    border-bottom: 1px solid var(--line);
+}
+
+.content-header .section-kicker {
+    text-align: center;
+}
+
+.content-container h2 {
+    margin-bottom: 12px;
+    text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    line-height: 1.2;
+    letter-spacing: -1.7px;
+}
+
+.content-intro {
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--muted);
+    font-size: .95rem;
+}
+
+.content-container h3 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 31px;
+    margin-bottom: 14px;
+    color: #242c43;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.16rem;
+    line-height: 1.5;
+}
+
+.content-container h3::before {
+    content: "";
+    display: inline-block;
+    flex-shrink: 0;
+    width: 5px;
+    height: 24px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #7767f5, #55d7d0);
+}
+
+.content-container p {
+    margin-bottom: 17px;
+    color: #667187;
+    font-size: .94rem;
+    line-height: 1.95;
+    overflow-wrap: anywhere;
+}
+
+.content-container strong {
+    color: #242c43;
+    font-weight: 700;
+}
+
+/* Team information */
+
+.team-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 16px 0 25px;
+}
+
+.team-member {
+    padding: 15px 16px;
+    border: 1px solid #eceef5;
+    border-radius: 14px;
+    background: #fafbfe;
+}
+
+.team-member strong {
+    display: block;
+    font-size: .88rem;
+    line-height: 1.65;
+}
+
+.team-member span {
+    display: block;
+    margin-top: 5px;
+    color: #7b8497;
+    font-size: .78rem;
+    line-height: 1.6;
+}
+
+.project-note {
+    padding: 20px 22px;
+    margin-top: 18px;
+    border: 1px solid #e5e2ff;
+    border-radius: 16px;
+    background: linear-gradient(120deg, #f5f3ff, #f0fbff);
+}
+
+.project-note p {
+    margin: 0;
+}
+
+/* User guide */
+
+.guide-block {
+    padding: 20px 22px;
+    margin-top: 19px;
+    border: 1px solid #eceef5;
+    border-radius: 17px;
+    background: #fcfcff;
+}
+
+.guide-block h3 {
+    margin-top: 0;
+}
+
+.guide-block p {
+    margin-bottom: 0;
+}
+
+.guide-number {
+    color: var(--blue);
+    font-weight: 800;
+}
+
+.guide-system {
+    border-color: #dcefe9;
+    background: #f3fbf8;
+}
+
+.guide-system h3::before {
+    background: #25b89a;
 }
 
 /* Footer */
-footer{
-    text-align:center;
-    padding:30px;
-    opacity:0.7;
-    font-size:0.9rem;
+
+footer {
+    padding: 26px 20px;
+    margin-top: auto;
+    border-top: 1px solid #e6e8f0;
+    background: #fff;
+    color: #81899a;
+    text-align: center;
+    font-size: .82rem;
 }
 
-/* Responsive */
-@media(max-width:768px){
-    nav{
-        flex-direction:column;
-        gap:15px;
+footer strong {
+    color: #515c72;
+    font-weight: 700;
+}
+
+/* Focus and motion */
+
+:focus-visible {
+    outline: 3px solid #8c82ff;
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Tablet */
+
+@media (max-width: 850px) {
+    nav {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .nav-note {
+        display: none;
+    }
+
+    .hero h1 {
+        letter-spacing: -2.7px;
+    }
+
+    .hero-panel {
+        border-radius: 27px;
+    }
+
+    .container {
+        gap: 16px;
+    }
+
+    .card {
+        padding: 25px;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 580px) {
+    nav {
+        padding: 12px 15px;
+        gap: 12px;
+    }
+
+    .brand-mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 13px;
+    }
+
+    .brand-name {
+        font-size: 1.15rem;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        gap: 2px;
+    }
+
+    .nav-links li {
+        flex: 1;
+        text-align: center;
+        padding: 9px 7px;
+        font-size: .82rem;
+    }
+
+    .hero {
+        padding: 22px 14px 48px;
+    }
+
+    .hero-panel {
+        padding: 38px 22px 0;
+        border-radius: 25px;
+    }
+
+    .eyebrow {
+        font-size: .66rem;
+        letter-spacing: .8px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.65rem, 12vw, 4rem);
+        letter-spacing: -2.5px;
+    }
+
+    .hero-copy {
+        font-size: .94rem;
+        line-height: 1.85;
+    }
+
+    .hero-bottom {
+        align-items: flex-start;
+        margin-top: 23px;
+    }
+
+    .hero-caption {
+        font-size: .78rem;
+    }
+
+    .hero-art {
+        min-height: auto;
+        padding-top: 28px;
+    }
+
+    .art-window {
+        padding: 15px 15px 0;
+    }
+
+    .section {
+        padding: 42px 15px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .section-heading h2 {
+        font-size: 1.9rem;
+    }
+
+    .section-heading p {
+        font-size: .88rem;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .card {
+        min-height: 0;
+        padding: 25px 23px;
+        border-radius: 20px;
+    }
+
+    .card-top {
+        margin-bottom: 20px;
+    }
+
+    .card h3 {
+        font-size: 1.35rem;
+    }
+
+    .card p {
+        margin-bottom: 22px;
+        font-size: .9rem;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .content-container {
+        padding: 26px 19px;
+        border-radius: 21px;
+    }
+
+    .content-container h2 {
+        font-size: 2rem;
+        letter-spacing: -1.1px;
+    }
+
+    .content-container h3 {
+        font-size: 1.04rem;
+    }
+
+    .content-container p {
+        font-size: .9rem;
+    }
+
+    .team-list {
+        grid-template-columns: 1fr;
+        gap: 9px;
+    }
+
+    .guide-block {
+        padding: 17px;
+    }
+
+    .project-note {
+        padding: 17px;
     }
 }
 </style>
@@ -162,136 +903,331 @@ footer{
 <body>
 
 <nav>
-    <h2>⏳ TimeCapsule</h2>
-    <ul>
-        <li onclick="showHome()">Home</li>
-        <li onclick="showAbout()">About</li>
-        <li onclick="showGuide()">User Guide</li>
+    <button class="brand" onclick="showHome()" aria-label="TimeCapsule home">
+        <span class="brand-mark">⌛</span>
+        <span class="brand-name">Time<span>Capsule.</span></span>
+    </button>
+
+    <ul class="nav-links" aria-label="Main navigation">
+        <li class="active" data-page="home" onclick="showHome()" role="button" tabindex="0">Home</li>
+        <li data-page="about" onclick="showAbout()" role="button" tabindex="0">About</li>
+        <li data-page="guide" onclick="showGuide()" role="button" tabindex="0">User Guide</li>
     </ul>
+
+    <div class="nav-note">
+        <span class="status-dot"></span>
+        Academic Knowledge Hub
+    </div>
 </nav>
 
 <!-- HOME -->
 <section id="homeSection" class="section hero">
-    <h1>Preserve. Share. Inspire.</h1>
-    <p>A digital platform where seniors pass knowledge to juniors and build a smarter academic future.</p>
+    <div class="section-wrap">
 
-    <div class="container">
+        <div class="hero-panel">
+            <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                Knowledge that connects generations
+            </div>
 
-        <div class="card">
-            <h2>🎓 Seniors Upload</h2>
-            <p>
-                Share your valuable notes, assignments, and academic resources 
-                to support and guide upcoming batches effectively.
+            <h1>
+                Preserve. Share.
+                <span>Inspire.</span>
+            </h1>
+
+            <p class="hero-copy">
+                A digital platform where seniors pass knowledge to juniors
+                and build a smarter academic future.
             </p>
-            <a href="https://forms.office.com/pages/responsepage.aspx?id=lvhZc-Jxrk24oxXN-X8vEKeL4prtP3ZIqV7AxQ30OZZURUY4RU5QTEI5SVA3UDZaRkFCRjNJRktaNy4u&route=shorturl" target="_blank" class="btn">
-                Upload Files
-            </a>
+
+            <div class="hero-bottom">
+                <div class="hero-caption">
+                    <span class="caption-icon">✦</span>
+                    One generation's knowledge. Another's opportunity.
+                </div>
+            </div>
+
+            <div class="hero-art" aria-hidden="true">
+                <div class="art-window">
+                    <div class="window-top">
+                        <i></i><i></i><i></i>
+                    </div>
+
+                    <div class="window-row">
+                        <div class="window-icon">↗</div>
+                        <div>
+                            <div class="window-label">Senior contributions</div>
+                            <div class="window-sub">Share notes and resources</div>
+                        </div>
+                        <div class="window-arrow">↗</div>
+                    </div>
+
+                    <div class="window-row">
+                        <div class="window-icon cyan">⌘</div>
+                        <div>
+                            <div class="window-label">Junior learning</div>
+                            <div class="window-sub">Discover academic materials</div>
+                        </div>
+                        <div class="window-arrow">↗</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="card">
-            <h2>📂 Junior Access</h2>
-            <p>
-                Access curated study materials shared by seniors 
-                to prepare smarter and achieve better academic success.
-            </p>
-            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=lvhZc-Jxrk24oxXN-X8vEKeL4prtP3ZIqV7AxQ30OZZUOFZEU0YyRDNQOVpQREVVRTJINEozT1o3WC4u" target="_blank" class="btn">
-                Access Files
-            </a>
-        </div>
+        <div style="padding-top: 48px;">
+            <div class="section-heading">
+                <div>
+                    <span class="section-kicker">Explore TimeCapsule</span>
+                    <h2>Knowledge moves forward.</h2>
+                </div>
+                <p>Choose your path and be part of a better academic experience.</p>
+            </div>
 
+            <div class="container">
+
+                <article class="card">
+                    <div class="card-top">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 3v12"/>
+                                <path d="m7 8 5-5 5 5"/>
+                                <path d="M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/>
+                            </svg>
+                        </div>
+                        <span class="card-tag">FOR SENIORS</span>
+                    </div>
+
+                    <h3>Share what you've learned.</h3>
+                    <p>
+                        Share your valuable notes, assignments, and academic resources
+                        to support and guide upcoming batches effectively.
+                    </p>
+
+                    <a href="https://forms.office.com/pages/responsepage.aspx?id=lvhZc-Jxrk24oxXN-X8vEKeL4prtP3ZIqV7AxQ30OZZURUY4RU5QTEI5SVA3UDZaRkFCRjNJRktaNy4u&route=shorturl"
+                       target="_blank" rel="noopener noreferrer" class="btn">
+                        Upload Files
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M13 6l6 6-6 6"/>
+                        </svg>
+                    </a>
+                </article>
+
+                <article class="card">
+                    <div class="card-top">
+                        <div class="card-icon mint">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21z"/>
+                                <path d="M4 5.5v13A2.5 2.5 0 0 1 6.5 16H20"/>
+                                <path d="M9 7h7M9 11h6"/>
+                            </svg>
+                        </div>
+                        <span class="card-tag">FOR JUNIORS</span>
+                    </div>
+
+                    <h3>Learn from those before you.</h3>
+                    <p>
+                        Access curated study materials shared by seniors
+                        to prepare smarter and achieve better academic success.
+                    </p>
+
+                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=lvhZc-Jxrk24oxXN-X8vEKeL4prtP3ZIqV7AxQ30OZZUOFZEU0YyRDNQOVpQREVVRTJINEozT1o3WC4u"
+                       target="_blank" rel="noopener noreferrer" class="btn secondary">
+                        Access Files
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M13 6l6 6-6 6"/>
+                        </svg>
+                    </a>
+                </article>
+
+            </div>
+        </div>
     </div>
 </section>
 
 <!-- ABOUT -->
 <section id="aboutSection" class="section hidden">
-    <div class="content-container">
+    <div class="section-wrap">
+        <div class="content-container">
 
-        <h2>About the Project</h2>
+            <div class="content-header">
+                <span class="section-kicker">The story behind the platform</span>
+                <h2>About TimeCapsule</h2>
+                <p class="content-intro">
+                    Unlock the Past, Ace the Future.
+                    Connecting academic experience with the next generation.
+                </p>
+            </div>
 
-        <p><strong>TimeCapsule – Unlock the Past, Ace the Future</strong> is an academic knowledge-sharing platform developed to preserve valuable study materials from seniors and make them accessible to juniors.</p>
+            <p>
+                <strong>TimeCapsule – Unlock the Past, Ace the Future</strong>
+                is an academic knowledge-sharing platform developed to preserve
+                valuable study materials from seniors and make them accessible to juniors.
+            </p>
 
-        <p>The system allows seniors to upload notes, PDFs, assignments, and important resources, which are securely stored and organized using Microsoft Excel, SharePoint, and Power Automate.</p><br>
+            <p>
+                The system allows seniors to upload notes, PDFs, assignments,
+                and important resources, which are securely stored and organized
+                using Microsoft Excel, SharePoint, and Power Automate.
+            </p>
 
-        <p>The platform ensures structured document storage, automated workflows, and smooth knowledge transfer between batches, helping students prepare smarter and achieve better academic success.</p>
+            <p>
+                The platform ensures structured document storage, automated workflows,
+                and smooth knowledge transfer between batches, helping students
+                prepare smarter and achieve better academic success.
+            </p>
 
-        <h3>Team – Roles & Responsibilities</h3>
-        <p>
-        <strong> Kodamanchili Sri Satya Lokesh </strong>  – Junior Flow Development<br>
-        <strong> Karri Karthik Raju </strong> – Senior Flow Development<br>
-        <strong> Kankatala Madhurima </strong> – SharePoint Management<br>
-        <strong> Billakurthi Varshitha </strong> – Senior Testing & Validation<br>
-        <strong> Malla Charmi </strong> – Senior Testing & Validation<br>
-        <strong> Narla Veera Venkata Suryanarayana </strong> – Junior Testing & Validation
-        </p>
+            <h3>Team — Roles & Responsibilities</h3>
 
-        <h3>Developed Under iSHIP – Technical Hub</h3>
-        <p>This project was successfully developed as part of the <strong>iSHIP program at Technical Hub</strong>, gaining hands-on experience in workflow automation and document management.</p>
+            <div class="team-list">
+                <div class="team-member">
+                    <strong>Kodamanchili Sri Satya Lokesh</strong>
+                    <span>Junior Flow Development</span>
+                </div>
 
+                <div class="team-member">
+                    <strong>Karri Karthik Raju</strong>
+                    <span>Senior Flow Development</span>
+                </div>
+
+                <div class="team-member">
+                    <strong>Kankatala Madhurima</strong>
+                    <span>SharePoint Management</span>
+                </div>
+
+                <div class="team-member">
+                    <strong>Billakurthi Varshitha</strong>
+                    <span>Senior Testing & Validation</span>
+                </div>
+
+                <div class="team-member">
+                    <strong>Malla Charmi</strong>
+                    <span>Senior Testing & Validation</span>
+                </div>
+
+                <div class="team-member">
+                    <strong>Narla Veera Venkata Suryanarayana</strong>
+                    <span>Junior Testing & Validation</span>
+                </div>
+            </div>
+
+            <div class="project-note">
+                <h3 style="margin-top:0">Developed Under iSHIP – Technical Hub</h3>
+                <p>
+                    This project was successfully developed as part of the
+                    <strong>iSHIP program at Technical Hub</strong>, gaining hands-on
+                    experience in workflow automation and document management.
+                </p>
+            </div>
+
+        </div>
     </div>
 </section>
 
 <!-- USER GUIDE -->
 <section id="guideSection" class="section hidden">
-    <div class="content-container">
+    <div class="section-wrap">
+        <div class="content-container">
 
-        <h2>📘 User Guide</h2>
+            <div class="content-header">
+                <span class="section-kicker">Everything you need to know</span>
+                <h2>User Guide</h2>
+                <p class="content-intro">
+                    Follow these steps to contribute resources or request
+                    access to academic study materials.
+                </p>
+            </div>
 
-        <h3>👨‍🎓 For Seniors</h3>
-        <p>
-         Login with college mail only (Aditya college)<br>
-        1️⃣ Open the <strong>Senior Upload Form</strong>.<br>
-        2️⃣ Fill in subject details and upload your document.<br>
-        3️⃣ Submit the form for approval.<br>
-        4️⃣ Receive an email notification (Approved / Rejected).<br>
-        5️⃣ Approved files are stored securely in subject-wise folders.
-        </p>
+            <div class="guide-block">
+                <h3>👨‍🎓 For Seniors</h3>
+                <p>
+                    Login with college mail only (Aditya college)<br>
+                    <span class="guide-number">01.</span> Open the <strong>Senior Upload Form</strong>.<br>
+                    <span class="guide-number">02.</span> Fill in subject details and upload your document.<br>
+                    <span class="guide-number">03.</span> Submit the form for approval.<br>
+                    <span class="guide-number">04.</span> Receive an email notification (Approved / Rejected).<br>
+                    <span class="guide-number">05.</span> Approved files are stored securely in subject-wise folders.
+                </p>
+            </div>
 
-        <h3>👨‍🎓 For Juniors</h3>
-        <p>
-        Login with college mail only (Aditya college)<br>
-        1️⃣ Open the <strong>Junior Access Form</strong>.<br>
-        2️⃣ Submit your request with required details.<br>
-        3️⃣ Receive the SharePoint folder link via email.<br>
-        4️⃣ Access study materials and submit feedback.
-        </p>
+            <div class="guide-block">
+                <h3>👨‍🎓 For Juniors</h3>
+                <p>
+                    Login with college mail only (Aditya college)<br>
+                    <span class="guide-number">01.</span> Open the <strong>Junior Access Form</strong>.<br>
+                    <span class="guide-number">02.</span> Submit your request with required details.<br>
+                    <span class="guide-number">03.</span> Receive the SharePoint folder link via email.<br>
+                    <span class="guide-number">04.</span> Access study materials and submit feedback.
+                </p>
+            </div>
 
-        <h3>🔄 System Process</h3>
-        <p>
-        ✔ Documents are routed for approval through Power Automate.<br>
-        ✔ Approved files are stored in SharePoint.<br>
-        ✔ All activities are logged and tracked for transparency.
-        </p>
+            <div class="guide-block guide-system">
+                <h3>🔄 System Process</h3>
+                <p>
+                    ✔ Documents are routed for approval through Power Automate.<br>
+                    ✔ Approved files are stored in SharePoint.<br>
+                    ✔ All activities are logged and tracked for transparency.
+                </p>
+            </div>
 
+        </div>
     </div>
 </section>
 
 <footer>
-Built by ⏳ Team 37 | iSHIP @Technical Hub
+    Built with care by <strong>⏳ Team 37</strong> &nbsp;|&nbsp; iSHIP @Technical Hub
 </footer>
 
 <script>
-function hideAll(){
+function hideAll() {
     document.getElementById("homeSection").classList.add("hidden");
     document.getElementById("aboutSection").classList.add("hidden");
     document.getElementById("guideSection").classList.add("hidden");
 }
 
-function showHome(){
+function setActive(page) {
+    document.querySelectorAll(".nav-links li").forEach(function(item) {
+        const active = item.dataset.page === page;
+        item.classList.toggle("active", active);
+
+        if (active) {
+            item.setAttribute("aria-current", "page");
+        } else {
+            item.removeAttribute("aria-current");
+        }
+    });
+}
+
+function showHome() {
     hideAll();
     document.getElementById("homeSection").classList.remove("hidden");
+    setActive("home");
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function showAbout(){
+function showAbout() {
     hideAll();
     document.getElementById("aboutSection").classList.remove("hidden");
+    setActive("about");
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function showGuide(){
+function showGuide() {
     hideAll();
     document.getElementById("guideSection").classList.remove("hidden");
+    setActive("guide");
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
+/* Keyboard navigation for the navigation items */
+document.querySelectorAll(".nav-links li").forEach(function(item) {
+    item.addEventListener("keydown", function(event) {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            item.click();
+        }
+    });
+});
 </script>
 
 </body>
 </html>
-
